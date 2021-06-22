@@ -195,6 +195,7 @@ body {
     border: none;
     margin-top: 29px;
     margin-top: 0.78378rem;
+    cursor: pointer;
 }
 
 .quantity-selector button {
@@ -207,6 +208,7 @@ body {
     width: 6.744vw;
     height: 38px;
     height: 4.4186vw;
+    cursor: pointer;
 }
 
 .quantity-selector {
@@ -250,4 +252,5 @@ body {
 .quantity-selector.min button.quantity-remove,
 .quantity-selector.max button.quantity-add {
     opacity: 0.3;
+    cursor: not-allowed;
 }
