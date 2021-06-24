@@ -66,6 +66,7 @@
         if (!frame) return;
         /*frame.style.left = 0;
         frame.style.position = 'absolute';*/
+
         frame.style.width = '100%';
         frame.style.maxWidth = (maxWidth || 600) + 'px';
         frame.style.marginLeft = frame.style.marginRight = 'auto';
@@ -73,8 +74,14 @@
         var slotDiv = slotDivInner.parentNode;
 
         slotDivInner.style.width = slotDiv.style.width = '100%';
-        slotDiv.style.position = 'relative';
+        slotDivInner.style.left = 0;
         slotDivInner.style.position = 'absolute';
+
+        if (maxWidth === '100%') {
+            slotDiv.style.position = '';
+        } else {
+            slotDiv.style.position = 'relative';
+        }
 
         function setHeight(h) {
             slotDiv.style.height = frame.style.height = h + 'px';
