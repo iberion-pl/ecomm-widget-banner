@@ -58,7 +58,7 @@
     }
     QuantitySelector(quantitySelector, quantityLimits);
 
-    function adoptHeight() {
+    function adoptHeight(maxWidth) {
         var doc = document,
             docEl = doc.documentElement,
             device = window.top;
@@ -68,7 +68,7 @@
         frame.style.position = 'absolute';*/
 
         frame.style.width = '100%';
-        frame.style.maxWidth = (maxWidth || 600) + 'px';
+        frame.style.maxWidth = (maxWidth === '100%' ? Math.min(device.innerWidth, device.innerHeight) : maxWidth) + 'px';
         frame.style.marginLeft = frame.style.marginRight = 'auto';
         var slotDivInner = frame.parentNode;
         var slotDiv = slotDivInner.parentNode;
@@ -98,5 +98,5 @@
 
         window.addEventListener('resize', resize);
     }
-    adoptHeight();
+    adoptHeight(maxWidth);
 })(TIME_TO_GO, quantityLimits, maxWidth);
