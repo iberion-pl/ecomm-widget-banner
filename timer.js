@@ -79,6 +79,7 @@
 
         if (maxWidth === '100%') {
             slotDiv.style.position = '';
+            device.addEventListener('resize', resize);
         } else {
             slotDiv.style.position = 'relative';
         }
@@ -87,6 +88,7 @@
 
         window.addEventListener('resize', resize);
         window.addEventListener('load', resize);
+
 
         function updateFrameMaxWidth() {
             var width = Math.min(device.innerWidth, device.innerHeight)
