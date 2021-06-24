@@ -89,14 +89,15 @@
 
         function resize() {
 
-            if (docEl.offsetHeight != docEl.clientHeight) {
-                setHeight(docEl.offsetHeight);
-            }
+            //if (docEl.offsetHeight != docEl.clientHeight) {
+            setHeight(docEl.offsetHeight);
+            //}
 
         }
         resize();
 
         window.addEventListener('resize', resize);
+        window.addEventListener('load', resize);
     }
     adoptHeight(maxWidth);
 })(TIME_TO_GO, quantityLimits, maxWidth);
