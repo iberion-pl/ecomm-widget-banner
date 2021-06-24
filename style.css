@@ -126,9 +126,14 @@ body {
 
 .timer-ribbon {
     width: 100%;
-    height: auto;
+    height: 0;
     background-color: #EA335A;
     text-align: center;
+    overflow: hidden;
+}
+
+.timer-ribbon.visible {
+    height: auto;
 }
 
 .timer-container {
@@ -215,6 +220,14 @@ body {
     position: relative;
 }
 
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
 .quantity-selector .quantity-number {
     display: block;
     width: 38px;
@@ -226,8 +239,9 @@ body {
     background-color: #ffffff;
     color: #000000;
     position: absolute;
-    top: 11px;
-    top: 1.279vw;
+    /*top: 11px;
+    top: 1.279vw;*/
+    top: 0.45em;
     left: 40px;
     left: 4.6511vw;
     line-height: 1.478;

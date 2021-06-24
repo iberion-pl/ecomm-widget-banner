@@ -2,17 +2,17 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="[%SilnikJSplik%][%SilnikJSURL%]" />
     <style type="text/css">
         body {
-            background-color: #F7F7F7;
+            background-color: [%Kolorta%];
         }
     </style>
     <script>
-        var TIME_TO_GO = 50 * 60; // seconds
+        var TIME_TO_GO = [%Ofertawygasazamin%] * 60; // seconds
         var quantityLimits = {
             min: 1,
-            max: 9
+            max: [%Maxsztuk%]
         };
     </script>
 
@@ -36,20 +36,20 @@
         </div>
         <div class="product">
             <div class="product-image">
-                <img src="./butla.png" width="100%" />
+                <img src="[%Obrazekproduktu%]" width="100%" />
             </div>
             <div class="product-description-container">
-                <span class="producer-logo"><img src="./logo.png"/></span>
-                <div class="product-warning">Produkt na wyczerpaniu</div>
-                <div class="product-name">Nutri-Nano CoQ-10</div>
-                <div class="product-volume">50 kapsułek</div>
+                <span class="producer-logo"><img src="[%Logoproducenta%]"/></span>
+                <div class="product-warning">[%Informacjaodostpnoci%]</div>
+                <div class="product-name">[%Nazwaproduktu%]</div>
+                <div class="product-volume">[%Liczbasztukmlgramwopakowaniu%]</div>
                 <div class="product-description">
-                    Wysokiej jakości suplement diety, bez cukrów, soli i skrobi.
+                   [%Opisproduktu%]
                 </div>
                 <div class="price-and-num-container">
                     <div class="price">
                         <span class="price-label">CENA</span>
-                        <span class="price-value">59,90 zł</span>
+                        <span class="price-value">[%Cena%] zł</span>
                     </div>
 
                     <div class="quantity">
@@ -64,9 +64,7 @@
             </div>
         </div>
     </div>
-
-    <script async defer src="timer.js"></script>
-
+<script src="[%SilnikJSplik%][%SilnikJSURL%]" async defer></script>
 </body>
 
 </html>
