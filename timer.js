@@ -63,8 +63,12 @@
             docEl = doc.documentElement;
         var frame = window.frameElement;
         if (!frame) return;
+        frame.style.left = 0;
+        frame.style.position = 'absolute';
+        frame.style.width = '100%';
         if (docEl.offsetHeight != docEl.clientHeight) {
-            frame.style.height = docEl.offsetHeight + 'px';
+            frame.parentNode.style.height = frame.style.height = docEl.offsetHeight + 'px';
+
         }
     }
     adoptHeight();
