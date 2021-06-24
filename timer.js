@@ -1,4 +1,4 @@
-(function(TIME_TO_GO, quantityLimits) {
+(function(TIME_TO_GO, quantityLimits, maxWidth) {
     var container = document.querySelector('.timer-digit-container');
     var ribbon = document.querySelector('.timer-ribbon');
     var minutes_tens = container.querySelector('.minutes.tens');
@@ -60,16 +60,36 @@
 
     function adoptHeight() {
         var doc = document,
-            docEl = doc.documentElement;
+            docEl = doc.documentElement,
+            device = window.top;
         var frame = window.frameElement;
         if (!frame) return;
-        frame.style.left = 0;
-        frame.style.position = 'absolute';
+        /*frame.style.left = 0;
+        frame.style.position = 'absolute';*/
         frame.style.width = '100%';
-        if (docEl.offsetHeight != docEl.clientHeight) {
-            frame.parentNode.style.height = frame.style.height = docEl.offsetHeight + 'px';
+        frame.style.maxWidth = (maxWidth || 600) + 'px';
+        frame.style.marginLeft = frame.style.marginRight = 'auto';
+        var slotDivInner = frame.parentNode;
+        var slotDiv = slotDivInner.parentNode;
+
+        slotDivInner.style.width = slotDiv.style.width = '100%';
+        slotDiv.style.position = 'relative';
+        slotDivInner.style.position = 'absolute';
+
+        function setHeight(h) {
+            slotDiv.style.height = frame.style.height = h + 'px';
+        }
+
+        function resize() {
+
+            if (docEl.offsetHeight != docEl.clientHeight) {
+                setHeight(docEl.offsetHeight);
+            }
 
         }
+        resize();
+
+        window.addEventListener('resize', resize);
     }
     adoptHeight();
-})(TIME_TO_GO, quantityLimits);
+})(TIME_TO_GO, quantityLimits, maxWidth);
