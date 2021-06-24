@@ -68,7 +68,7 @@
         frame.style.position = 'absolute';*/
 
         frame.style.width = '100%';
-        frame.style.maxWidth = (maxWidth === '100%' ? Math.min(device.innerWidth, device.innerHeight) : maxWidth) + 'px';
+
         frame.style.marginLeft = frame.style.marginRight = 'auto';
         var slotDivInner = frame.parentNode;
         var slotDiv = slotDivInner.parentNode;
@@ -82,6 +82,16 @@
         } else {
             slotDiv.style.position = 'relative';
         }
+        updateFrameMaxWidth();
+        resize();
+
+        window.addEventListener('resize', resize);
+        window.addEventListener('load', resize);
+
+        function updateFrameMaxWidth() {
+            var width = Math.min(device.innerWidth, device.innerHeight)
+            frame.style.maxWidth = (maxWidth === '100%' ? width : Math.min(width, maxWidth)) + 'px';
+        }
 
         function setHeight(h) {
             slotDiv.style.height = frame.style.height = h + 'px';
@@ -91,13 +101,11 @@
 
             //if (docEl.offsetHeight != docEl.clientHeight) {
             setHeight(docEl.offsetHeight);
+            updateFrameMaxWidth();
             //}
 
         }
-        resize();
 
-        window.addEventListener('resize', resize);
-        window.addEventListener('load', resize);
     }
     adoptHeight(maxWidth);
 })(TIME_TO_GO, quantityLimits, maxWidth);
