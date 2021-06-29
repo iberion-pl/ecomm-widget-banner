@@ -2,6 +2,7 @@
     var container = document.querySelector('.timer-digit-container');
     var orderButton = document.querySelector('.order-button');
     var priceValue = document.querySelector('.price .price-value');
+    var quantity = document.querySelector('.quantity .quantity-number');
 
     var formDiv = document.querySelector('.form');
     var form = formDiv.querySelector('form');
@@ -10,8 +11,17 @@
         e.preventDefault();
         e.stopPropagation();
     });
-    submitButton.value = submitButton.value.replace(submitButton.getAttribute('data-update'), priceValue.innerHTML);
+    //submitButton.value = submitButton.value.replace(submitButton.getAttribute('data-update'), priceValue.innerHTML);
+    //updateTotal();
 
+    function updateTotal() {
+        var quant = parseInt(quantity.innerHTML, 10);
+        var price = parseFloat(priceValue.innerHTML.replace(',', '.'));
+        var total = (price * quant).toFixed(2);
+        var totalTemplate = submitButton.getAttribute('data-total');
+        var valueTemplate = submitButton.getAttribute('data-value');
+        submitButton.value = valueTemplate.replace(totalTemplate, total);
+    }
     var ribbon = document.querySelector('.timer-ribbon');
     var minutes_tens = container.querySelector('.minutes.tens');
     var minutes_ones = container.querySelector('.minutes.ones');
@@ -66,7 +76,11 @@
             selector.classList.remove('min', 'max')
             if (num === limits.min) selector.classList.add('min');
             if (num === limits.max) selector.classList.add('max');
+
+            updateTotal();
         }
+
+        change(0);
     }
     QuantitySelector(quantitySelector, quantityLimits);
 
