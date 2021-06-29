@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="[%SilnikJSplik%][%SilnikJSURL%]" />
+  <link rel="stylesheet" href="https://iberion-pl.github.io/ecomm-widget-banner/style.css" /> 
     <style type="text/css">
         body {
             background-color: [%Kolorta%];
@@ -14,6 +14,8 @@
             min: 1,
             max: [%Maxsztuk%]
         };
+       var maxWidth = '[%Maksymalnaszeroko%]';
+       
     </script>
 
 </head>
@@ -48,12 +50,15 @@
                 </div>
                 <div class="price-and-num-container">
                     <div class="price">
-                        <span class="price-label">CENA</span>
-                        <span class="price-value">[%Cena%] zł</span>
+                        <span class="label">CENA</span>
+                        <div class="price-container">
+                            <span class="price-value">[%Cena%]</span>
+                            <span class="price-currency">zł</span>
+                        </div>
                     </div>
 
                     <div class="quantity">
-                        <span class="quantity-label">SZTUK</span>
+                        <span class="label">SZTUK</span>
                         <div class="quantity-selector min"><button type="button" class="quantity-remove">&minus;</button><button type="button" class="quantity-add">&plus;</button>
                             <span class="quantity-number">1</span>
                         </div>
@@ -64,7 +69,46 @@
             </div>
         </div>
     </div>
-<script src="[%SilnikJSplik%][%SilnikJSURL%]" async defer></script>
+    <div class="form hidden">
+        <div class="form-title">Dokończ zamówienie w 60 sekund</div>
+        <form method="POST">
+            <div class="form-fields">
+                <div class="fields-row">
+                    <input class="form-field name" name="name" type="text" placeholder="Imię" />
+                    <input class="form-field surname" name="surname" type="text" placeholder="Nazwisko" />
+                </div>
+                <div class="fields-row">
+                    <input class="form-field phone" name="phone" type="text" placeholder="Telefon" />
+                    <input class="form-field email" name="email" type="email" placeholder="Email" />
+                </div>
+            </div>
+            <div class="delivery-method">
+                <span class="label">METODA DOSTAWY</span>
+                <input type="radio" name="delivery" id="delivery-inpost" value="inpost"><label for="delivery-inpost">Paczkomat InPost</label>
+                <input type="radio" name="delivery" id="delivery-post" value="pocztapolska"><label for="delivery-post">List priorytetowy Poczta Polska</label>
+            </div>
+            <div class="pay-form">
+                <span class="label">METODA PŁATNOŚCI</span>
+                <input type="radio" name="paymethod" id="applepay" value="applepay"><label for="applepay">Apple Pay</label>
+                <input type="radio" name="paymethod" id="payu" value="payu"><label for="payu">Płacę z PayU</label>
+                <input type="radio" name="paymethod" id="blik" value="blik"><label for="blik">BLIK</label>
+            </div>
+            <div class="terms">
+                <span class="label">WARUNKI I ZASADY</span>
+                <div class="container">
+                    <input type="checkbox" name="terms" id="terms" value="checked" />
+                    <label for="terms">
+                        Potwierdzam przeczytanie, zrozumienie i zaakceptowanie <a href="">warunków i zasad sprzedaży</a> oraz wyrażam zgodę na wysłanie 
+                        przez firmę Iberion faktury elektronicznej na mój adres e-mail. Wyrażam zgodę na to, że niniejsze warunki będą obowiązywać podczas
+                        składania kolejnych zamówień w sklepie Iberion Store za pomocą tego konta oraz że będę mieć możliwość zapoznania się z nimi przed 
+                        złożeniem zamówień. W przypadku zmiany warunków otrzymam monit o zaakceptowanie nowych warunków i zasad sprzedaży.
+                    </label>
+                </div>
+            </div>
+            <input type="submit" value="Zamawiam i płacę {price} zł" class="submit" data-update="{price}" />
+        </form>
+    </div>
+<script src="https://iberion-pl.github.io/ecomm-widget-banner/timer.js" async defer></script>
 </body>
 
 </html>

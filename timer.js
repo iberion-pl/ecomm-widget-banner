@@ -1,5 +1,12 @@
 (function(TIME_TO_GO, quantityLimits, maxWidth) {
     var container = document.querySelector('.timer-digit-container');
+    var orderButton = document.querySelector('.order-button');
+    var priceValue = document.querySelector('.price .price-value');
+
+    var form = document.querySelector('.form');
+    var submitButton = form.querySelector('.submit');
+    submitButton.value = submitButton.value.replace(submitButton.getAttribute('data-update'), priceValue.innerHTML);
+
     var ribbon = document.querySelector('.timer-ribbon');
     var minutes_tens = container.querySelector('.minutes.tens');
     var minutes_ones = container.querySelector('.minutes.ones');
@@ -58,24 +65,28 @@
     }
     QuantitySelector(quantitySelector, quantityLimits);
 
-    function adoptHeight(maxWidth) {
+    function adoptHeight() {
         var doc = document,
             docEl = doc.documentElement,
             device = window.top;
         var frame = window.frameElement;
+        //console.log('adoptingHeight');
         if (!frame) return;
+        //console.log('here');
         /*frame.style.left = 0;
         frame.style.position = 'absolute';*/
 
         frame.style.width = '100%';
-
+        frame.style.height = '250px';
         frame.style.marginLeft = frame.style.marginRight = 'auto';
+
         var slotDivInner = frame.parentNode;
         var slotDiv = slotDivInner.parentNode;
 
         slotDivInner.style.width = slotDiv.style.width = '100%';
         slotDivInner.style.left = 0;
         slotDivInner.style.position = 'absolute';
+        slotDivInner.style.textAlign = 'center';
 
         if (maxWidth === '100%') {
             slotDiv.style.position = '';
@@ -97,17 +108,24 @@
 
         function setHeight(h) {
             slotDiv.style.height = frame.style.height = h + 'px';
+            //console.log('setting height to', h);
         }
 
         function resize() {
-
+            //console.log('resize');
             //if (docEl.offsetHeight != docEl.clientHeight) {
             setHeight(docEl.offsetHeight);
             updateFrameMaxWidth();
             //}
 
         }
-
+        orderButton.addEventListener('click', function() {
+            slotDiv.style.transition = frame.style.transition = 'height 1s cubic-bezier(0.9, 0, 0.55, 0.95) 0s';
+            form.classList.remove('hidden');
+            resize();
+        });
     }
-    adoptHeight(maxWidth);
+    adoptHeight();
+
+
 })(TIME_TO_GO, quantityLimits, maxWidth);

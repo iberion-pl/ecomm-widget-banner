@@ -9,6 +9,13 @@ html {
     /* =37px @860px width */
     max-width: 860px;
     width: 100%;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 300px) {
+    html {
+        font-size: 14px;
+    }
 }
 
 body {
@@ -21,9 +28,8 @@ body {
 }
 
 .product {
-    padding-top: 23px;
-    padding-left: 23.5px;
-    padding-right: 20px;
+    padding: 23px 20px 84px 23.5px;
+    padding: 2.674vw 2.325vw 9.767vw 2.732vw;
 }
 
 .product-image {
@@ -97,8 +103,7 @@ body {
     margin-left: 6.27%;
 }
 
-.price .price-label,
-.quantity .quantity-label {
+.label {
     text-transform: uppercase;
     letter-spacing: 3px;
     display: block;
@@ -108,8 +113,7 @@ body {
     color: #757575;
 }
 
-.price .price-value {
-    display: block;
+.price-container {
     color: #EA335A;
     font-size: 49px;
     font-size: 1.3243rem;
@@ -185,7 +189,8 @@ body {
     visibility: visible;
 }
 
-.order-button {
+.order-button,
+.form .submit {
     background-color: #EA335A;
     color: #ffffff;
     border-radius: 10px;
@@ -201,6 +206,15 @@ body {
     margin-top: 29px;
     margin-top: 0.78378rem;
     cursor: pointer;
+}
+
+.form .submit {
+    padding: 18px 40px 21px;
+    padding: 0.5806em 1.29em 0.677em;
+    margin: 62px auto 0;
+    margin-top: 7.21vw;
+    text-align: center;
+    width: auto;
 }
 
 .quantity-selector button {
@@ -267,4 +281,139 @@ body {
 .quantity-selector.max button.quantity-add {
     opacity: 0.3;
     cursor: not-allowed;
+}
+
+.terms label {
+    font-size: 17px;
+    font-size: 0.45946rem;
+    line-height: 1.353;
+    color: #757575;
+    display: block;
+}
+
+.terms input[type=checkbox] {
+    float: left;
+}
+
+.form {
+    padding: 71px 74px;
+    padding: 8.255vw 8.6vw;
+    /* margin-bottom: 71px;
+    margin-bottom: 8.255vw;*/
+    display: block;
+}
+
+.form.hidden {
+    display: none;
+}
+
+.form-title {
+    margin-top: 18px;
+    margin-top: 2.093vw;
+    margin-bottom: 47px;
+    margin-bottom: 5.465vw;
+    font-size: 37px;
+    font-size: 1rem;
+    line-height: 1.108;
+    color: #000000;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form-title::before {
+    content: "";
+    background-image: url(./ic_timer_48px.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: block;
+    width: 36px;
+    width: 4.186vw;
+    height: 42px;
+    height: 4.883vw;
+    overflow: hidden;
+    margin: 0 auto 18px;
+    margin-bottom: 2.093vw;
+}
+
+.fields-row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.form-field {
+    padding: 16px 23px 19px;
+    padding: 1.86vw 2.674vw 2.209vw;
+    border: 1px solid #979797;
+    border-radius: 9px;
+    background-color: #ffffff;
+    color: #000000;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    width: 50%;
+    font-size: 20px;
+    font-size: 0.54rem;
+}
+
+.form-field:nth-child(odd) {
+    margin-right: 8px;
+    margin-right: 0.93vw;
+}
+
+.form-field:nth-child(even) {
+    margin-left: 8px;
+    margin-left: 0.93vw;
+}
+
+input[type=radio]+label[for] {
+    font-size: 20px;
+    font-size: 0.54rem;
+    color: #757575;
+    cursor: pointer;
+}
+
+input[type=radio]+label[for]::before {
+    width: 48px;
+    vertical-align: middle;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+input[type=radio]+label[for]::after {
+    content: "";
+    display: block;
+}
+
+input[type=radio]+label[for="delivery-inpost"]::before {
+    content: url(./inpost.png);
+}
+
+input[type=radio]+label[for="delivery-post"]::before {
+    content: url(./poczta.png);
+}
+
+input[type=radio]+label[for="applepay"]::before {
+    content: url(./applepay.png);
+}
+
+input[type=radio]+label[for="payu"]::before {
+    content: url(./payu.png);
+}
+
+input[type=radio]+label[for="blik"]::before {
+    content: url(./blik.png);
+}
+
+.delivery-method,
+.pay-form {
+    margin-top: 40px;
+    margin-bottom: 45px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
