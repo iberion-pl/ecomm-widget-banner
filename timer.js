@@ -3,8 +3,13 @@
     var orderButton = document.querySelector('.order-button');
     var priceValue = document.querySelector('.price .price-value');
 
-    var form = document.querySelector('.form');
-    var submitButton = form.querySelector('.submit');
+    var formDiv = document.querySelector('.form');
+    var form = formDiv.querySelector('form');
+    var submitButton = formDiv.querySelector('.submit');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
     submitButton.value = submitButton.value.replace(submitButton.getAttribute('data-update'), priceValue.innerHTML);
 
     var ribbon = document.querySelector('.timer-ribbon');
@@ -121,7 +126,7 @@
         }
         orderButton.addEventListener('click', function() {
             slotDiv.style.transition = frame.style.transition = 'height 1s cubic-bezier(0.9, 0, 0.55, 0.95) 0s';
-            form.classList.remove('hidden');
+            formDiv.classList.remove('hidden');
             resize();
         });
     }
