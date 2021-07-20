@@ -17,7 +17,7 @@
     function showDisclaimer() {
         var layerId = 'iberion-widget-infolayer';
         var tdoc = top.document;
-        var info = "<div style=\"width: 80%;height: 80%;margin:10% auto;color:#000000;background-color: #cccccc;font-size:1rem;\
+        var info = "<div style=\"width: 80%;height: 70%;margin:15vh auto;color:#000000;background-color: #cccccc;font-size:1rem;\
         text-align:center;padding:1rem;box-sizing:border-box;border-radius: 1em;overflow:hidden;opacity:0;transition: .5s opacity;font-family: sans-serif;\">\
         <span style=\"font-size:2em\">⚠️</span>\
         Z przyczyn technicznych podane dane, w tym dane osobowe, nie mogą zostać przetworzone. Złożenie zamówienia jest obecnie niemożliwe. Proszę spróbować później.\
@@ -44,7 +44,7 @@
             infoLayer.id = layerId;
             tdoc.body.appendChild(infoLayer);
         }
-        infoLayer.setAttribute('style', 'position:fixed;top:50%;left:50%;width:0;height:0;background-color:rgba(0,0,0,0.7);transition: .5s width, .5s height, .5s top, .5s left;');
+        infoLayer.setAttribute('style', 'position:fixed;z-index:9001;top:50%;left:50%;width:0;height:0;background-color:rgba(0,0,0,0.7);transition: .5s width, .5s height, .5s top, .5s left;');
         infoLayer.innerHTML = info;
         infoLayer.querySelector('button').onclick = function() {
             infoLayer.style.width = infoLayer.style.height = 0;
