@@ -10,7 +10,58 @@
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         e.stopPropagation();
+
+        showDisclaimer();
     });
+
+    function showDisclaimer() {
+        var layerId = 'iberion-widget-infolayer';
+        var tdoc = top.document;
+        var info = "<div style=\"width: 80%;height: 80%;margin:10% auto;color:#000000;background-color: #cccccc;font-size:1rem;\
+        text-align:center;padding:1rem;box-sizing:border-box;border-radius: 1em;overflow:hidden;opacity:0;transition: .5s opacity;font-family: sans-serif;\">\
+        <span style=\"font-size:2em\">⚠️</span>\
+        Z przyczyn technicznych podane dane, w tym dane osobowe, nie mogą zostać przetworzone. Złożenie zamówienia jest obecnie niemożliwe. Proszę spróbować później.\
+        <div style=\"text-align:center;\"><button type=\"button\" style=\"\
+        background-color: #EA335A;\
+    color: #ffffff;\
+    border-radius: 10px;\
+    font-size: 31px;\
+    font-size: 0.83783rem;\
+    line-height: 1.323;\
+    display: block;\
+    border: none;\
+    cursor: pointer;\
+    margin: 62px auto 0;\
+    margin-top: 7.21vw;\
+    text-align: center;\
+    width: auto;\
+    padding: 1em 2em;\
+        \">Rozumiem</button></div>\
+        </div>";
+        var infoLayer = tdoc.getElementById(layerId);
+        if (!infoLayer) {
+            infoLayer = tdoc.createElement('div');
+            infoLayer.id = layerId;
+            tdoc.body.appendChild(infoLayer);
+        }
+        infoLayer.setAttribute('style', 'position:fixed;top:50%;left:50%;width:0;height:0;background-color:rgba(0,0,0,0.7);transition: .5s width, .5s height, .5s top, .5s left;');
+        infoLayer.innerHTML = info;
+        infoLayer.querySelector('button').onclick = function() {
+            infoLayer.style.width = infoLayer.style.height = 0;
+            infoLayer.style.top = infoLayer.style.left = '50%';
+            infoLayer.firstChild.style.opacity = 0;
+            setTimeout(function() {
+                infoLayer.parentNode.removeChild(infoLayer);
+            }, 500);
+        }
+        setTimeout(function() {
+            infoLayer.style.width = infoLayer.style.height = '100%';
+            infoLayer.style.top = infoLayer.style.left = 0;
+            setTimeout(function() {
+                infoLayer.firstChild.style.opacity = 1;
+            }, 500);
+        }, 250)
+    }
     //submitButton.value = submitButton.value.replace(submitButton.getAttribute('data-update'), priceValue.innerHTML);
     //updateTotal();
 

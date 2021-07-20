@@ -283,7 +283,8 @@ body {
     cursor: not-allowed;
 }
 
-.terms label {
+.terms label,
+.rodo {
     font-size: 17px;
     font-size: 0.45946rem;
     line-height: 1.353;

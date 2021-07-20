@@ -73,36 +73,45 @@
         <form method="POST">
             <div class="form-fields">
                 <div class="fields-row">
-                    <input class="form-field name" name="name" type="text" placeholder="Imię" />
-                    <input class="form-field surname" name="surname" type="text" placeholder="Nazwisko" />
+                    <input class="form-field name" name="name" type="text" placeholder="Imię" required/>
+                    <input class="form-field surname" name="surname" type="text" placeholder="Nazwisko" required />
                 </div>
                 <div class="fields-row">
-                    <input class="form-field phone" name="phone" type="text" placeholder="Telefon" />
-                    <input class="form-field email" name="email" type="email" placeholder="Email" />
+                    <input class="form-field phone" name="phone" type="text" placeholder="Telefon" required />
+                    <input class="form-field email" name="email" type="email" placeholder="Email" required/>
                 </div>
             </div>
             <div class="delivery-method">
                 <span class="label">METODA DOSTAWY</span>
-                <input type="radio" name="delivery" id="delivery-inpost" value="inpost"><label for="delivery-inpost">Paczkomat InPost</label>
-                <input type="radio" name="delivery" id="delivery-post" value="pocztapolska"><label for="delivery-post">List priorytetowy Poczta Polska</label>
+                <input type="radio" name="delivery" id="delivery-inpost" value="inpost" required><label for="delivery-inpost">Paczkomat InPost</label>
+                <input type="radio" name="delivery" id="delivery-post" value="pocztapolska" required><label for="delivery-post">List priorytetowy Poczta Polska</label>
             </div>
             <div class="pay-form">
                 <span class="label">METODA PŁATNOŚCI</span>
-                <input type="radio" name="paymethod" id="applepay" value="applepay"><label for="applepay">Apple Pay</label>
-                <input type="radio" name="paymethod" id="payu" value="payu"><label for="payu">Płacę z PayU</label>
-                <input type="radio" name="paymethod" id="blik" value="blik"><label for="blik">BLIK</label>
+                <input type="radio" name="paymethod" id="applepay" value="applepay" required><label for="applepay">Apple Pay</label>
+                <input type="radio" name="paymethod" id="payu" value="payu" required><label for="payu">Płacę z PayU</label>
+                <input type="radio" name="paymethod" id="blik" value="blik" required><label for="blik">BLIK</label>
             </div>
             <div class="terms">
                 <span class="label">WARUNKI I ZASADY</span>
                 <div class="container">
-                    <input type="checkbox" name="terms" id="terms" value="checked" />
+                    <input type="checkbox" name="terms" id="terms" value="checked" required />
                     <label for="terms">
-                        Potwierdzam przeczytanie, zrozumienie i zaakceptowanie <a href="">warunków i zasad sprzedaży</a> oraz wyrażam zgodę na wysłanie 
+                        Zapoznałam/em się z <a href="https://rolnikinfo.pl/regulamin" target="_blank">regulaminem</a> i 
+                        <a href="" target="_blank">polityką prywatności</a> i akceptuję ich postanowienia.
+                        <!--Potwierdzam przeczytanie, zrozumienie i zaakceptowanie <a href="">warunków i zasad sprzedaży</a> oraz wyrażam zgodę na wysłanie 
                         przez firmę Iberion faktury elektronicznej na mój adres e-mail. Wyrażam zgodę na to, że niniejsze warunki będą obowiązywać podczas
                         składania kolejnych zamówień w sklepie Iberion Store za pomocą tego konta oraz że będę mieć możliwość zapoznania się z nimi przed 
-                        złożeniem zamówień. W przypadku zmiany warunków otrzymam monit o zaakceptowanie nowych warunków i zasad sprzedaży.
+                        złożeniem zamówień. W przypadku zmiany warunków otrzymam monit o zaakceptowanie nowych warunków i zasad sprzedaży.-->
                     </label>
                 </div>
+                <span class="rodo">
+                    Administratorem Twoich danych osobowych jest Iberion Sp. z o. o. z siedzibą w Warszawie (02-828), ul. Zięby 41 („Administrator”). 
+                    Twoje dane osobowe są przetwarzane przez Administratora w celu zawarcia i realizacji umów sprzedaży. 
+                    Masz prawo do żądania dostępu do danych, uzyskania ich kopii, sprostowania, usunięcia, ograniczenia ich przetwarzania i przenoszenia, 
+                    a także prawo wniesienia skargi do organu nadzorczego. 
+                    Więcej informacji w <a href="" target="_blank">polityce prywatności</a>.
+                </span>
             </div>
             <input type="submit" value="" class="submit" data-total="{total}" data-value="Zamawiam i płacę {total} zł" />
         </form>
