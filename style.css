@@ -292,6 +292,10 @@ body {
     display: block;
 }
 
+.rodo {
+    margin-top: 1em;
+}
+
 .terms input[type=checkbox] {
     float: left;
 }
