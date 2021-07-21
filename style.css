@@ -357,7 +357,7 @@ body {
     color: #000000;
     margin-top: 9px;
     margin-bottom: 9px;
-    width: 50%;
+    width: auto;
     font-size: 20px;
     font-size: 0.54rem;
 }
@@ -421,4 +421,19 @@ input[type=radio]+label[for="blik"]::before {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+}
+
+span.required::after,
+.terms label::before {
+    content: "*";
+    color: red;
+    position: absolute;
+}
+
+.terms label {
+    margin-left: 1em;
+}
+
+.terms label::before {
+    margin-left: -1em;
 }

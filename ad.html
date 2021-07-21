@@ -15,6 +15,7 @@
             max: 9
         };
         var maxWidth = 600;
+        var colorTheme = '#EA335A';
     </script>
 
 </head>
@@ -40,7 +41,7 @@
                 <img src="./butla.png" width="100%" />
             </div>
             <div class="product-description-container">
-                <span class="producer-logo"><img src="./logo.png"/></span>
+                <span class="producer-logo"><img src="./logo.png" /></span>
                 <div class="product-warning">Produkt na wyczerpaniu</div>
                 <div class="product-name">Nutri-Nano CoQ-10</div>
                 <div class="product-volume">50 kapsułek</div>
@@ -73,32 +74,44 @@
         <form method="POST">
             <div class="form-fields">
                 <div class="fields-row">
-                    <input class="form-field name" name="name" type="text" placeholder="Imię" required/>
-                    <input class="form-field surname" name="surname" type="text" placeholder="Nazwisko" required />
+                    <span class="required">
+                        <input class="form-field name" name="name" type="text" placeholder="Imię" required />
+                    </span>
+                    <span class="required">
+                        <input class="form-field surname" name="surname" type="text" placeholder="Nazwisko" required />
+                    </span>
                 </div>
                 <div class="fields-row">
-                    <input class="form-field phone" name="phone" type="text" placeholder="Telefon" required />
-                    <input class="form-field email" name="email" type="email" placeholder="Email" required/>
+                    <span class="required">
+                        <input class="form-field phone" name="phone" type="text" placeholder="Telefon" required />
+                    </span>
+                    <span class="required"><input class="form-field email" name="email" type="email" placeholder="Email"
+                            required /></span>
                 </div>
             </div>
             <div class="delivery-method">
-                <span class="label">METODA DOSTAWY</span>
+                <span class="label required">METODA DOSTAWY</span>
                 <input type="radio" name="delivery" id="delivery-inpost" value="inpost" required><label for="delivery-inpost">Paczkomat InPost</label>
                 <input type="radio" name="delivery" id="delivery-post" value="pocztapolska" required><label for="delivery-post">List priorytetowy Poczta Polska</label>
             </div>
             <div class="pay-form">
-                <span class="label">METODA PŁATNOŚCI</span>
-                <input type="radio" name="paymethod" id="applepay" value="applepay" required><label for="applepay">Apple Pay</label>
-                <input type="radio" name="paymethod" id="payu" value="payu" required><label for="payu">Płacę z PayU</label>
+                <span class="label required">METODA PŁATNOŚCI</span>
+                <input type="radio" name="paymethod" id="applepay" value="applepay" required><label for="applepay">Apple
+                    Pay</label>
+                <input type="radio" name="paymethod" id="payu" value="payu" required><label for="payu">Płacę z
+                    PayU</label>
                 <input type="radio" name="paymethod" id="blik" value="blik" required><label for="blik">BLIK</label>
             </div>
             <div class="terms">
                 <span class="label">WARUNKI I ZASADY</span>
                 <div class="container">
+                    <!--<span class="required">-->
                     <input type="checkbox" name="terms" id="terms" value="checked" required />
+                    <!--</span>-->
                     <label for="terms">
-                        Zapoznałam/em się z <a href="https://rolnikinfo.pl/regulamin" target="_blank">regulaminem</a> i 
-                        <a href="" target="_blank">polityką prywatności</a> i akceptuję ich postanowienia.
+                        Zapoznałam/em się z <a href="https://rolnikinfo.pl/regulamin" target="_blank">regulaminem</a> i
+                        <a href="https://rolnikinfo.pl/polityka-prywatnosci" target="_blank">polityką prywatności</a> i
+                        akceptuję ich postanowienia.
                         <!--Potwierdzam przeczytanie, zrozumienie i zaakceptowanie <a href="">warunków i zasad sprzedaży</a> oraz wyrażam zgodę na wysłanie 
                         przez firmę Iberion faktury elektronicznej na mój adres e-mail. Wyrażam zgodę na to, że niniejsze warunki będą obowiązywać podczas
                         składania kolejnych zamówień w sklepie Iberion Store za pomocą tego konta oraz że będę mieć możliwość zapoznania się z nimi przed 
@@ -106,11 +119,14 @@
                     </label>
                 </div>
                 <span class="rodo">
-                    Administratorem Twoich danych osobowych jest Iberion Sp. z o. o. z siedzibą w Warszawie (02-828), ul. Zięby 41 („Administrator”). 
-                    Twoje dane osobowe są przetwarzane przez Administratora w celu zawarcia i realizacji umów sprzedaży. 
-                    Masz prawo do żądania dostępu do danych, uzyskania ich kopii, sprostowania, usunięcia, ograniczenia ich przetwarzania i przenoszenia, 
-                    a także prawo wniesienia skargi do organu nadzorczego. 
-                    Więcej informacji w <a href="" target="_blank">polityce prywatności</a>.
+                    Administratorem Twoich danych osobowych jest Iberion Sp. z o. o. z siedzibą w Warszawie (02-828),
+                    ul. Zięby 41 („Administrator”).
+                    Twoje dane osobowe są przetwarzane przez Administratora w celu zawarcia i realizacji umów sprzedaży.
+                    Masz prawo do żądania dostępu do danych, uzyskania ich kopii, sprostowania, usunięcia, ograniczenia
+                    ich przetwarzania i przenoszenia,
+                    a także prawo wniesienia skargi do organu nadzorczego.
+                    Więcej informacji w <a href="https://rolnikinfo.pl/polityka-prywatnosci" target="_blank">polityce
+                        prywatności</a>.
                 </span>
             </div>
             <input type="submit" value="" class="submit" data-total="{total}" data-value="Zamawiam i płacę {total} zł" />
