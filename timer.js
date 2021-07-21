@@ -105,7 +105,10 @@
 
     function countdown() {
         if (currentTime > 0) displayTime(--currentTime);
-        else displayTime(0);
+        else {
+            displayTime(0);
+            if (zeroAd) zeroAd();
+        }
     }
 
     function displayTime(time) {
@@ -212,7 +215,7 @@
         }
         zeroAd = function() {
             clearListeners();
-            setHeight(0)
+            setHeight(0);
         }
     }
     adoptHeight();
