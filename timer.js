@@ -8,6 +8,8 @@
     var form = formDiv.querySelector('form');
     var submitButton = formDiv.querySelector('.submit');
     var clearListeners, zeroAd; // will be set after load
+    var cssCacheNodes = [];
+
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -148,6 +150,28 @@
     }
     QuantitySelector(quantitySelector, quantityLimits);
 
+    function setCss(node, prop, value) {
+        if (!node.cssCache) {
+            cssCacheNodes.push(node);
+            node.cssCache = {};
+        }
+        if (!(prop in node.cssCache)) {
+            node.cssCache[prop] = node.style[prop];
+        }
+
+        node.style[prop] = value;
+    }
+
+    function restoreCSS() {
+        cssCacheNodes.forEach(function(node) {
+            for (var prop in node.cssCache) {
+                node.style[prop] = node.cssCache[prop];
+            }
+            node.cssCache = null;
+        });
+        cssCacheNodes = [];
+    }
+
     function adoptHeight() {
         var doc = document,
             docEl = doc.documentElement,
@@ -159,23 +183,38 @@
         /*frame.style.left = 0;
         frame.style.position = 'absolute';*/
 
-        frame.style.width = '100%';
+        /*frame.style.width = '100%';
         frame.style.height = '250px';
-        frame.style.marginLeft = frame.style.marginRight = 'auto';
+        frame.style.marginLeft = frame.style.marginRight = 'auto';*/
+
+        setCss(frame, 'width', '100%');
+        setCss(frame, 'height', '250px');
+        setCss(frame, 'marginLeft', 'auto');
+        setCss(frame, 'marginRight', 'auto');
+
 
         var slotDivInner = frame.parentNode;
         var slotDiv = slotDivInner.parentNode;
 
-        slotDivInner.style.width = slotDiv.style.width = '100%';
+        /*slotDivInner.style.width = slotDiv.style.width = '100%';
         slotDivInner.style.left = 0;
         slotDivInner.style.position = 'absolute';
-        slotDivInner.style.textAlign = 'center';
+        slotDivInner.style.textAlign = 'center';*/
+
+        setCss(slotDivInner, 'width', '100%');
+        setCss(slotDiv, 'width', '100%');
+        setCss(slotDivInner, 'left', 0);
+        setCss(slotDivInner, 'position', 'absolute');
+        setCss(slotDivInner, 'textAlign', 'center');
+
 
         if (maxWidth === '100%') {
-            slotDiv.style.position = '';
+            //slotDiv.style.position = '';
+            setCss(slotDiv, 'position', '');
             device.addEventListener('resize', resize);
         } else {
-            slotDiv.style.position = 'relative';
+            //slotDiv.style.position = 'relative';
+            setCss(slotDiv, 'position', 'relative');
         }
         updateFrameMaxWidth();
         resize();
@@ -185,12 +224,18 @@
 
 
         function updateFrameMaxWidth() {
-            var width = Math.min(device.innerWidth, device.innerHeight)
-            frame.style.maxWidth = (maxWidth === '100%' ? width : Math.min(width, maxWidth)) + 'px';
+            var width = Math.min(device.innerWidth, device.innerHeight);
+            var mw = (maxWidth === '100%' ? width : Math.min(width, maxWidth)) + 'px';
+            //frame.style.maxWidth = mw;
+            setCss(frame, 'maxWidth', mw);
         }
 
         function setHeight(h) {
-            slotDiv.style.height = frame.style.height = h + 'px';
+            h = h + 'px';
+            setCss(slotDiv, 'height', h);
+            setCss(frame, 'height', h);
+
+            //slotDiv.style.height = frame.style.height = h + 'px';
             //console.log('setting height to', h);
         }
 
@@ -203,7 +248,11 @@
 
         }
         orderButton.addEventListener('click', function() {
-            slotDiv.style.transition = frame.style.transition = 'height 1s cubic-bezier(0.9, 0, 0.55, 0.95) 0s';
+            var transition = 'height 1s cubic-bezier(0.9, 0, 0.55, 0.95) 0s';
+            setCss(slotDiv, 'transition', transition);
+            setCss(frame, 'transition', transition);
+
+            //slotDiv.style.transition = frame.style.transition = transition;
             formDiv.classList.remove('hidden');
             resize();
         });
@@ -213,8 +262,10 @@
             window.removeEventListener('resize', resize);
             window.removeEventListener('load', resize);
         }
+
         zeroAd = function() {
             clearListeners();
+            restoreCSS();
             setHeight(0);
             slotDiv.style.minHeight = '';
         }
