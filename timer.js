@@ -1,4 +1,4 @@
-(function(TIME_TO_GO, quantityLimits, maxWidth) {
+(function(TIME_TO_GO, quantityLimits, maxWidth, colorTheme) {
     var container = document.querySelector('.timer-digit-container');
     var orderButton = document.querySelector('.order-button');
     var priceValue = document.querySelector('.price .price-value');
@@ -22,7 +22,7 @@
         <span style=\"font-size:2em\">⚠️</span>\
         Z przyczyn technicznych podane dane, w tym dane osobowe, nie mogą zostać przetworzone. Złożenie zamówienia jest obecnie niemożliwe. Proszę spróbować później.\
         <div style=\"text-align:center;\"><button type=\"button\" style=\"\
-        background-color: #EA335A;\
+        background-color: " + colorTheme + ";\
     color: #ffffff;\
     border-radius: 10px;\
     font-size: 31px;\
@@ -198,4 +198,4 @@
     adoptHeight();
 
 
-})(TIME_TO_GO, quantityLimits, maxWidth);
+})(TIME_TO_GO, quantityLimits, maxWidth, colorTheme);
