@@ -357,11 +357,14 @@ body {
     color: #000000;
     margin-top: 9px;
     margin-bottom: 9px;
-    width: auto;
+    box-sizing: border-box;
+    width: calc(100% - 1em);
     font-size: 20px;
     font-size: 0.54rem;
 }
 
+
+/*
 .form-field:nth-child(odd) {
     margin-right: 8px;
     margin-right: 0.93vw;
@@ -371,6 +374,7 @@ body {
     margin-left: 8px;
     margin-left: 0.93vw;
 }
+*/
 
 input[type=radio]+label[for] {
     font-size: 20px;
@@ -428,6 +432,12 @@ span.required::after,
     content: "*";
     color: red;
     position: absolute;
+}
+
+.form-fields span.required {
+    display: inline-block;
+    width: 50%;
+    text-align: left;
 }
 
 .terms label {
