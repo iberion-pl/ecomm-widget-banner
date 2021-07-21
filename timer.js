@@ -18,7 +18,7 @@
 
     function countClick() {
         var img = new Image();
-        img.src = clickURL;
+        if (clickURL) img.src = clickURL;
     }
 
     function showDisclaimer() {
@@ -222,4 +222,4 @@
     adoptHeight();
 
 
-})(TIME_TO_GO, quantityLimits, maxWidth, colorTheme, clickURL);
+})(TIME_TO_GO, quantityLimits, maxWidth, colorTheme, window.clickURL);
