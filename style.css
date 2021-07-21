@@ -358,7 +358,8 @@ body {
     margin-top: 9px;
     margin-bottom: 9px;
     box-sizing: border-box;
-    width: calc(100% - 1em);
+    width: auto;
+    width: calc(100% - 2em);
     font-size: 20px;
     font-size: 0.54rem;
 }
@@ -437,7 +438,7 @@ span.required::after,
 .form-fields span.required {
     display: inline-block;
     width: 50%;
-    text-align: left;
+    text-align: center;
 }
 
 .terms label {
