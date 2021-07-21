@@ -216,6 +216,7 @@
         zeroAd = function() {
             clearListeners();
             setHeight(0);
+            slotDiv.style.minHeight = '';
         }
     }
     adoptHeight();
