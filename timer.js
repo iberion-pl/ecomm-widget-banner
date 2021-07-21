@@ -1,4 +1,4 @@
-(function(TIME_TO_GO, quantityLimits, maxWidth, colorTheme) {
+(function(TIME_TO_GO, quantityLimits, maxWidth, colorTheme, clickURL) {
     var container = document.querySelector('.timer-digit-container');
     var orderButton = document.querySelector('.order-button');
     var priceValue = document.querySelector('.price .price-value');
@@ -7,12 +7,19 @@
     var formDiv = document.querySelector('.form');
     var form = formDiv.querySelector('form');
     var submitButton = formDiv.querySelector('.submit');
+    var clearListeners, zeroAd; // will be set after load
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         e.stopPropagation();
 
         showDisclaimer();
+        countClick();
     });
+
+    function countClick() {
+        var img = new Image();
+        img.src = clickURL;
+    }
 
     function showDisclaimer() {
         var layerId = 'iberion-widget-infolayer';
@@ -47,11 +54,14 @@
         infoLayer.setAttribute('style', 'position:fixed;z-index:9001;top:50%;left:50%;width:0;height:0;background-color:rgba(0,0,0,0.7);transition: .5s width, .5s height, .5s top, .5s left;');
         infoLayer.innerHTML = info;
         infoLayer.querySelector('button').onclick = function() {
+            if (zeroAd) zeroAd();
             infoLayer.style.width = infoLayer.style.height = 0;
             infoLayer.style.top = infoLayer.style.left = '50%';
             infoLayer.firstChild.style.opacity = 0;
             setTimeout(function() {
                 infoLayer.parentNode.removeChild(infoLayer);
+                //if (clearListeners) clearListeners();
+                //window.frameElement.style.height = 0;
             }, 500);
         }
         setTimeout(function() {
@@ -194,8 +204,18 @@
             formDiv.classList.remove('hidden');
             resize();
         });
+
+        clearListeners = function() {
+            device.removeEventListener('resize', resize);
+            window.removeEventListener('resize', resize);
+            window.removeEventListener('load', resize);
+        }
+        zeroAd = function() {
+            clearListeners();
+            setHeight(0)
+        }
     }
     adoptHeight();
 
 
-})(TIME_TO_GO, quantityLimits, maxWidth, colorTheme);
+})(TIME_TO_GO, quantityLimits, maxWidth, colorTheme, clickURL);
