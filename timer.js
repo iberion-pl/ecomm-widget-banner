@@ -62,8 +62,6 @@
             infoLayer.firstChild.style.opacity = 0;
             setTimeout(function() {
                 infoLayer.parentNode.removeChild(infoLayer);
-                //if (clearListeners) clearListeners();
-                //window.frameElement.style.height = 0;
             }, 500);
         }
         setTimeout(function() {
@@ -74,8 +72,6 @@
             }, 500);
         }, 250)
     }
-    //submitButton.value = submitButton.value.replace(submitButton.getAttribute('data-update'), priceValue.innerHTML);
-    //updateTotal();
 
     function updateTotal() {
         var quant = parseInt(quantity.innerHTML, 10);
@@ -177,29 +173,15 @@
             docEl = doc.documentElement,
             device = window.top;
         var frame = window.frameElement;
-        //console.log('adoptingHeight');
         if (!frame) return;
-        //console.log('here');
-        /*frame.style.left = 0;
-        frame.style.position = 'absolute';*/
-
-        /*frame.style.width = '100%';
-        frame.style.height = '250px';
-        frame.style.marginLeft = frame.style.marginRight = 'auto';*/
 
         setCss(frame, 'width', '100%');
         setCss(frame, 'height', '250px');
         setCss(frame, 'marginLeft', 'auto');
         setCss(frame, 'marginRight', 'auto');
 
-
         var slotDivInner = frame.parentNode;
         var slotDiv = slotDivInner.parentNode;
-
-        /*slotDivInner.style.width = slotDiv.style.width = '100%';
-        slotDivInner.style.left = 0;
-        slotDivInner.style.position = 'absolute';
-        slotDivInner.style.textAlign = 'center';*/
 
         setCss(slotDivInner, 'width', '100%');
         setCss(slotDiv, 'width', '100%');
@@ -209,11 +191,9 @@
 
 
         if (maxWidth === '100%') {
-            //slotDiv.style.position = '';
             setCss(slotDiv, 'position', '');
             device.addEventListener('resize', resize);
         } else {
-            //slotDiv.style.position = 'relative';
             setCss(slotDiv, 'position', 'relative');
         }
         updateFrameMaxWidth();
@@ -226,7 +206,6 @@
         function updateFrameMaxWidth() {
             var width = Math.min(device.innerWidth, device.innerHeight);
             var mw = (maxWidth === '100%' ? width : Math.min(width, maxWidth)) + 'px';
-            //frame.style.maxWidth = mw;
             setCss(frame, 'maxWidth', mw);
         }
 
@@ -235,24 +214,17 @@
             setCss(slotDiv, 'height', h);
             setCss(frame, 'height', h);
 
-            //slotDiv.style.height = frame.style.height = h + 'px';
-            //console.log('setting height to', h);
         }
 
         function resize() {
-            //console.log('resize');
-            //if (docEl.offsetHeight != docEl.clientHeight) {
             setHeight(docEl.offsetHeight);
             updateFrameMaxWidth();
-            //}
-
         }
         orderButton.addEventListener('click', function() {
             var transition = 'height 1s cubic-bezier(0.9, 0, 0.55, 0.95) 0s';
             setCss(slotDiv, 'transition', transition);
             setCss(frame, 'transition', transition);
 
-            //slotDiv.style.transition = frame.style.transition = transition;
             formDiv.classList.remove('hidden');
             resize();
         });
@@ -267,7 +239,6 @@
             clearListeners();
             restoreCSS();
             setHeight(0);
-            slotDiv.style.minHeight = '';
         }
     }
     adoptHeight();
