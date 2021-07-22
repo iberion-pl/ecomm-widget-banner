@@ -239,6 +239,7 @@
             clearListeners();
             restoreCSS();
             setHeight(0);
+            slotDiv.style.minHeight = 0;
         }
     }
     adoptHeight();
