@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-  <link rel="stylesheet" href="https://iberion-pl.github.io/ecomm-widget-banner/style.css" /> 
+  <link rel="stylesheet" href="https://iberion-pl.github.io/ecomm-widget-banner/style.css?ord=%%CACHEBUSTER%%" /> 
     <style type="text/css">
         body {
             background-color: [%Kolorta%];
         }
+      
     </style>
     <script>
         var TIME_TO_GO = [%Ofertawygasazamin%] * 60; // seconds
@@ -15,12 +13,24 @@
             max: [%Maxsztuk%]
         };
        var maxWidth = '[%Maksymalnaszeroko%]';
-       
+        var colorTheme = '[%Motywkolorystyczny%]';
+        if (!colorTheme) {
+            var domain = top.document.location.hostname;
+            if (domain.match(/swiatgwiazd.pl$/i)) { colorTheme = '#CC6FAF'; }
+            else if (domain.match(/goniec.pl$/i)) { colorTheme = '#FF001F'; }
+            else if (domain.match(/rolnikinfo.pl$/i)) { colorTheme = '#56A426'; }
+            else if (domain.match(/smakosze.pl$/i)) { colorTheme = '#F3A317'; }
+
+            var style = document.createElement('style');
+            style.setAttribute('type', 'text/css');
+            style.innerHTML = '.product-warning, .price-container {color: ' + colorTheme + '} .timer-ribbon,.order-button,.form .submit, .quantity-selector button {background-color: ' + colorTheme + '}';
+            document.body.appendChild(style);
+        }
+        var clickURL = '%%CLICK_URL_UNESC%%%%' + encodeURIComponent('https://iberion-pl.github.io/ecomm-widget-banner/1x1.gif'); // 1x1 pixel
+    
     </script>
 
-</head>
 
-<body>
     <div class="ad">
         <div class="timer-ribbon">
             <div class="timer-container">
@@ -74,41 +84,43 @@
         <form method="POST">
             <div class="form-fields">
                 <div class="fields-row">
-                    <input class="form-field name" name="name" type="text" placeholder="Imię" />
-                    <input class="form-field surname" name="surname" type="text" placeholder="Nazwisko" />
+                    <span class="required"><input class="form-field name" name="name" type="text" placeholder="Imię" required /></span>
+                    <span class="required"><input class="form-field surname" name="surname" type="text" placeholder="Nazwisko" required /></span>
                 </div>
                 <div class="fields-row">
-                    <input class="form-field phone" name="phone" type="text" placeholder="Telefon" />
-                    <input class="form-field email" name="email" type="email" placeholder="Email" />
+                    <span class="required"><input class="form-field phone" name="phone" type="text" placeholder="Telefon" required /></span>
+                    <span class="required"><input class="form-field email" name="email" type="email" placeholder="Email" required /></span>
                 </div>
             </div>
             <div class="delivery-method">
-                <span class="label">METODA DOSTAWY</span>
-                <input type="radio" name="delivery" id="delivery-inpost" value="inpost"><label for="delivery-inpost">Paczkomat InPost</label>
-                <input type="radio" name="delivery" id="delivery-post" value="pocztapolska"><label for="delivery-post">List priorytetowy Poczta Polska</label>
+                <span class="label required">METODA DOSTAWY</span>
+                <input type="radio" name="delivery" id="delivery-inpost" value="inpost" required><label for="delivery-inpost">Paczkomat InPost</label>
+                <input type="radio" name="delivery" id="delivery-post" value="pocztapolska" required><label for="delivery-post">List priorytetowy Poczta Polska</label>
             </div>
             <div class="pay-form">
-                <span class="label">METODA PŁATNOŚCI</span>
-                <input type="radio" name="paymethod" id="applepay" value="applepay"><label for="applepay">Apple Pay</label>
-                <input type="radio" name="paymethod" id="payu" value="payu"><label for="payu">Płacę z PayU</label>
-                <input type="radio" name="paymethod" id="blik" value="blik"><label for="blik">BLIK</label>
+                <span class="label required">METODA PŁATNOŚCI</span>
+                <input type="radio" name="paymethod" id="applepay" value="applepay" required><label for="applepay">Apple Pay</label>
+                <input type="radio" name="paymethod" id="payu" value="payu" required><label for="payu">Płacę z PayU</label>
+                <input type="radio" name="paymethod" id="blik" value="blik" required><label for="blik">BLIK</label>
             </div>
             <div class="terms">
                 <span class="label">WARUNKI I ZASADY</span>
                 <div class="container">
-                    <input type="checkbox" name="terms" id="terms" value="checked" />
+                    <input type="checkbox" name="terms" id="terms" value="checked" required/>
                     <label for="terms">
-                        Potwierdzam przeczytanie, zrozumienie i zaakceptowanie <a href="">warunków i zasad sprzedaży</a> oraz wyrażam zgodę na wysłanie 
-                        przez firmę Iberion faktury elektronicznej na mój adres e-mail. Wyrażam zgodę na to, że niniejsze warunki będą obowiązywać podczas
-                        składania kolejnych zamówień w sklepie Iberion Store za pomocą tego konta oraz że będę mieć możliwość zapoznania się z nimi przed 
-                        złożeniem zamówień. W przypadku zmiany warunków otrzymam monit o zaakceptowanie nowych warunków i zasad sprzedaży.
+                      Zapoznałam/em się z <a href="/regulamin" target="_blank">regulaminem</a> i 
+                        <a href="/polityka-prywatnosci" target="_blank">polityką prywatności</a> i akceptuję ich postanowienia.
                     </label>
                 </div>
+              <span class="rodo">
+                    Administratorem Twoich danych osobowych jest Iberion Sp. z o. o. z siedzibą w Warszawie (02-828), ul. Zięby 41 („Administrator”). 
+                    Twoje dane osobowe są przetwarzane przez Administratora w celu zawarcia i realizacji umów sprzedaży. 
+                    Masz prawo do żądania dostępu do danych, uzyskania ich kopii, sprostowania, usunięcia, ograniczenia ich przetwarzania i przenoszenia, 
+                    a także prawo wniesienia skargi do organu nadzorczego. 
+                    Więcej informacji w <a href="/polityka-prywatnosci" target="_blank">polityce prywatności</a>. <!--[%URLRegulamin%] [%URLPolityka%] -->
+                </span>
             </div>
             <input type="submit" value="" class="submit" data-total="{total}" data-value="Zamawiam i płacę {total} zł" />
         </form>
     </div>
-<script src="https://iberion-pl.github.io/ecomm-widget-banner/timer.js" async defer></script>
-</body>
-
-</html>
+<script src="https://iberion-pl.github.io/ecomm-widget-banner/timer.js?ord=%%CACHEBUSTER%%" async defer></script>
