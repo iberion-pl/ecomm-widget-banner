@@ -306,6 +306,7 @@ body {
     /* margin-bottom: 71px;
     margin-bottom: 8.255vw;*/
     display: block;
+    clear: both;
 }
 
 .form.hidden {
