@@ -19,8 +19,10 @@
     });
 
     function countClick() {
-        var img = new Image();
-        if (clickURL) img.src = clickURL;
+        var iframe = document.createElement('iframe');
+        if (clickURL) iframe.src = clickURL;
+        iframe.setAttribute('style', 'width:1px;height:1px;position:absolute;top:-1px;left:-1px;');
+        document.body.appendChild(iframe);
     }
 
     function showDisclaimer() {
