@@ -1,5 +1,5 @@
 
-  <link rel="stylesheet" href="https://iberion-pl.github.io/ecomm-widget-banner/style.css?ord=%%CACHEBUSTER%%" /> 
+  <link rel="stylesheet" href="https://iberion-pl.github.io/ecomm-widget-banner/style.css" /> 
     <style type="text/css">
         body {
             background-color: [%Kolorta%];
@@ -13,21 +13,23 @@
             max: [%Maxsztuk%]
         };
        var maxWidth = '[%Maksymalnaszeroko%]';
-        var colorTheme = '[%Motywkolorystyczny%]';
-        if (!colorTheme) {
-            var domain = top.document.location.hostname;
-            if (domain.match(/swiatgwiazd.pl$/i)) { colorTheme = '#CC6FAF'; }
-            else if (domain.match(/goniec.pl$/i)) { colorTheme = '#FF001F'; }
-            else if (domain.match(/rolnikinfo.pl$/i)) { colorTheme = '#56A426'; }
-            else if (domain.match(/smakosze.pl$/i)) { colorTheme = '#F3A317'; }
-
-            var style = document.createElement('style');
-            style.setAttribute('type', 'text/css');
-            style.innerHTML = '.product-warning, .price-container {color: ' + colorTheme + '} .timer-ribbon,.order-button,.form .submit, .quantity-selector button {background-color: ' + colorTheme + '}';
-            document.body.appendChild(style);
-        }
-        var clickURL = '%%CLICK_URL_UNESC%%%%' + encodeURIComponent('https://iberion-pl.github.io/ecomm-widget-banner/1x1.gif'); // 1x1 pixel
-    
+      var colorTheme = '[%Motywkolorystyczny%]';
+      if(!colorTheme) {
+          var domain = top.document.location.hostname;
+          if(domain.match(/swiatgwiazd.pl$/i)){		colorTheme = '#CC6FAF';} 
+        	else if(domain.match(/goniec.pl$/i)) {	colorTheme = '#FF001F';}
+        	else if(domain.match(/rolnikinfo.pl$/i)){ colorTheme = '#56A426';}
+      		else if(domain.match(/smakosze.pl$/i)) {colorTheme = '#F3A317';}
+      
+      var style = document.createElement('style');
+      style.setAttribute('type','text/css');
+    style.innerHTML = '.product-warning, .price-container {color: '+colorTheme+'} .timer-ribbon,.order-button,.form .submit, .quantity-selector button {background-color: '+colorTheme+'}';
+      style.innerHTML += '.order-button {box-shadow: 0 0 0 0 '+colorTheme+';}';
+      style.innerHTML += '@keyframes pulse {0% { transform: scale(0.95); box-shadow: 0 0 0 0 '+colorTheme+'; } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);} 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);}}';
+      document.body.appendChild(style);
+      }
+      var clickURL = '%%CLICK_URL_UNESC%%' + encodeURIComponent('https://iberion-pl.github.io/ecomm-widget-banner/countclick.html'); 
+       
     </script>
 
 
@@ -51,7 +53,7 @@
                 <img src="[%Obrazekproduktu%]" width="100%" />
             </div>
             <div class="product-description-container">
-                <span class="producer-logo"><img src="[%Logoproducenta%]"/></span>
+                <script>var producerLogo = "[%Logoproducenta%]"; if(producerLogo) document.write('<span class="producer-logo"><img src="[%Logoproducenta%]"/></span>'); </script>
                 <div class="product-warning">[%Informacjaodostpnoci%]</div>
                 <div class="product-name">[%Nazwaproduktu%]</div>
                 <div class="product-volume">[%Liczbasztukmlgramwopakowaniu%]</div>
@@ -123,4 +125,4 @@
             <input type="submit" value="" class="submit" data-total="{total}" data-value="Zamawiam i płacę {total} zł" />
         </form>
     </div>
-<script src="https://iberion-pl.github.io/ecomm-widget-banner/timer.js?ord=%%CACHEBUSTER%%" async defer></script>
+<script src="https://iberion-pl.github.io/ecomm-widget-banner/timer.js" async defer></script>

@@ -449,3 +449,11 @@ span.required::after,
 .terms label::before {
     margin-left: -1em;
 }
+
+
+/* pulsating button */
+
+.order-button {
+    transform: scale(1);
+    animation: pulse 2s infinite;
+}
