@@ -5,7 +5,26 @@
     <link rel="stylesheet" href="style.css" />
     <style type="text/css">
         body {
-            background-color: #F7F7F7;
+            /* background-color: #F7F7F7;*/
+        }
+        
+        .order-button {
+            box-shadow: 0 0 0 0 #EA335A;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 #EA335A;
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
         }
     </style>
     <script>
@@ -22,6 +41,10 @@
 </head>
 
 <body>
+    <div class="notice">
+        <div class="portal-logo"><img src="https://portalparentingowy.pl/logo.svg" /></div>
+        <div class="user-notice">Drogi Czytelniku, przygotowaliśmy dla Ciebie specjalną ofertę:</div>
+    </div>
     <div class="ad">
         <div class="timer-ribbon">
             <div class="timer-container">

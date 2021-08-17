@@ -1,7 +1,7 @@
 
   <link rel="stylesheet" href="https://iberion-pl.github.io/ecomm-widget-banner/style.css" /> 
     <style type="text/css">
-        body {
+        .ad {
             background-color: [%Kolorta%];
         }
       
@@ -32,7 +32,10 @@
        
     </script>
 
-
+     <div class="notice">
+        <div class="portal-logo"><img src="/logo.svg" /></div>
+        <div class="user-notice">Drogi Czytelniku, przygotowaliśmy dla Ciebie specjalną ofertę:</div>
+    </div>
     <div class="ad">
         <div class="timer-ribbon">
             <div class="timer-container">
@@ -92,6 +95,14 @@
                 <div class="fields-row">
                     <span class="required"><input class="form-field phone" name="phone" type="text" placeholder="Telefon" required /></span>
                     <span class="required"><input class="form-field email" name="email" type="email" placeholder="Email" required /></span>
+                </div>
+                <div class="fields-row">
+                    <span class="required"><input class="form-field street" name="street" type="text" placeholder="Ulica" required /></span>
+                    <span class="required"><input class="form-field housenumber" name="housenumber" type="text" placeholder="Numer domu" required /></span>
+                </div>
+                <div class="fields-row">
+                    <span class="required"><input class="form-field city" name="city" type="text" placeholder="Miejscowość" required /></span>
+                    <span class="required"><input class="form-field postcode" name="postcode" type="text" pattern="\d{2}-\d{3}" placeholder="Kod pocztowy" required /></span>
                 </div>
             </div>
             <div class="delivery-method">
