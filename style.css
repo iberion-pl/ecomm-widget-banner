@@ -470,8 +470,13 @@ span.required::after,
     animation: pulse 2s infinite;
 }
 
+.portal-logo {
+    text-align: center;
+}
+
 .portal-logo img {
-    width: 50%;
-    display: block;
-    margin: 3vh auto 0;
+    width: 200px;
+    height: 60px;
+    object-fit: contain;
+    display: inline;
 }
