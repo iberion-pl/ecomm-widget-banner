@@ -89,6 +89,7 @@ body {
 
 .user-notice {
     color: #3F246E;
+    font-weight: bold;
     text-align: center;
     line-height: 4;
 }
