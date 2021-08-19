@@ -1,0 +1,123 @@
+<script>
+    window._sponsorshipSlots = [];
+    window.googletag = window.googletag || {
+        cmd: []
+    };
+
+    function makeSponsorshipAds(configTab) {
+        var ids = [];
+        configTab.forEach(function(config, idx) {
+            var slotDiv = document.createElement('div');
+            var id = config.id || ('div-gpt-ad-sponsorship' + (idx + 1));
+            var adunit = config.adunit;
+            var where = config.where;
+            if (!(id && adunit && where)) return;
+            var beforeHere = document.querySelector(where);
+            var exists;
+
+            if (beforeHere) {
+                if (exists = document.getElementById(id)) {
+                    exists.parentNode.removeChild(exists);
+                    googletag.cmd.push(function() {
+                        var slots = googletag.pubads().getSlots();
+                        var slotToDestroy = null;
+                        slots.forEach(function(slot) {
+                            if (slot.getSlotElementId() === id) {
+                                slotToDestroy = slot;
+                            }
+                        });
+                        if (slotToDestroy) googletag.destroySlots([slotToDestroy]);
+                    });
+                }
+
+                // create div
+                var wrapper = document.createElement('div');
+                wrapper.appendChild(slotDiv);
+                slotDiv.id = id;
+                slotDiv.style.cssText = 'margin-bottom: 2rem;';
+                beforeHere.parentNode.insertBefore(wrapper, beforeHere);
+
+                googletag.cmd.push(function() {
+                    var slot = googletag.defineSlot('/154371181/' + adunit, [
+                        [300, 250]
+                    ], id).addService(googletag.pubads());
+                    window._sponsorshipSlots.push(slot);
+                    ids.push(id);
+                });
+            }
+
+            if (ids.length && (idx == configTab.length - 1)) {
+                googletag.cmd.push(function() {
+                    googletag.pubads().enableSingleRequest();
+                    googletag.pubads().setCentering(true);
+                    googletag.pubads().enableLazyLoad({
+                        fetchMarginPercent: 50, // Fetch slots within .5 viewport.
+                        renderMarginPercent: 20, // Render slots within .2 viewport.
+                        mobileScaling: 1.0 // 2 = Double the above values on mobile.
+                    });
+                    googletag.pubads().setTargeting('sponsoring', ['{{Sponsorship Keyword}}']);
+                    googletag.enableServices();
+                    ids.forEach(function(id) {
+                        googletag.display(id);
+                    });
+                });
+            }
+        });
+    }
+    setTimeout(function() {
+        var kw = '{{Sponsorship Keyword}}';
+        switch (kw) {
+            case '{{Zestaw Chodakowskiej - kw_value}}':
+                makeSponsorshipAds([{
+                    adunit: 'swiatgwiazd.pl_wtg/swiatgwiazd_art_spons1',
+                    where: '#content > div.css-wbr5mf > p:nth-child(4) > br:nth-child(3)'
+                }, {
+                    adunit: 'swiatgwiazd.pl_wtg/swiatgwiazd_art_spons2',
+                    where: '#content > div.css-wbr5mf > p:nth-child(9) > br:nth-child(10)'
+                }]);
+                break;
+            case '{{Pakiet na śnieżnobiałe zęby - kw_value}}':
+                makeSponsorshipAds([{
+                    adunit: 'swiatgwiazd.pl_wtg/swiatgwiazd_art_spons1',
+                    where: '#content > div.css-wbr5mf > h2:nth-child(3)'
+                }, {
+                    adunit: 'swiatgwiazd.pl_wtg/swiatgwiazd_art_spons2',
+                    where: '#content > div.css-wbr5mf > p:nth-child(8)'
+                }]);
+                break;
+            case '{{Pakiet odmładzający twarz - kw_value}}':
+                makeSponsorshipAds([{
+                    adunit: 'swiatgwiazd.pl_wtg/swiatgwiazd_art_spons1',
+                    where: '#content > div.css-wbr5mf > p:nth-child(4) > br:nth-child(3)'
+                }, {
+                    adunit: 'swiatgwiazd.pl_wtg/swiatgwiazd_art_spons2',
+                    where: '#content > div.css-wbr5mf > p:nth-child(9) > br:nth-child(10)'
+                }]);
+                break;
+            case '{{Pakiet pielęgnacyjny - kw_value}}':
+                makeSponsorshipAds([{
+                    adunit: 'swiatgwiazd.pl_wtg/swiatgwiazd_art_spons1',
+                    where: '#content > div.css-wbr5mf > p:nth-child(4) > br:nth-child(3)'
+                }, {
+                    adunit: 'swiatgwiazd.pl_wtg/swiatgwiazd_art_spons2',
+                    where: '#content > div.css-wbr5mf > p:nth-child(9) > br:nth-child(10)'
+                }]);
+                break;
+            case '{{Pakiet regenerujący usta - kw_value}}':
+                makeSponsorshipAds([{
+                    adunit: 'swiatgwiazd.pl_wtg/swiatgwiazd_art_spons1',
+                    where: '#content > div.css-wbr5mf > p:nth-child(4) > br:nth-child(3)'
+                }, {
+                    adunit: 'swiatgwiazd.pl_wtg/swiatgwiazd_art_spons2',
+                    where: '#content > div.css-wbr5mf > p:nth-child(9) > br:nth-child(10)'
+                }]);
+                break;
+            default:
+                if (kw) makeSponsorshipAds([{
+                    adunit: 'swiatgwiazd.pl_wtg/swiatgwiazd_art_spons1',
+                    where: 'article#content > div[class*=css-]:nth-of-type(3)'
+                }]);
+        }
+
+    }, 1000);
+</script>
