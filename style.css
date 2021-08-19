@@ -37,6 +37,9 @@ body {
 
 .product-image {
     width: 40%;
+    padding-right: 23.5px;
+    padding-right: 2.732vw;
+    box-sizing: border-box;
     height: auto;
     display: inline-block;
 }
